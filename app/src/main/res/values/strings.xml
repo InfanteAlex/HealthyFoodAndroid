@@ -2,4 +2,10 @@
     <string name="app_name">healthyfoodandroid</string>
     <string name="username">Username</string>
     <string name="Login" />
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="create_account">Create account</string>
+    <string name="sing_up_for_free">Sing up for Free</string>
+    <string name="logo">Logo</string>
 </resources>
