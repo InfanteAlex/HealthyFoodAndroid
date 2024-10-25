@@ -35,6 +35,13 @@ public class MenuScreen extends AppCompatActivity {
                 startActivity(new Intent(MenuScreen.this, recipespage.class));
             }
         });
+        ImageView finderButton = findViewById(R.id.finder);
+        finderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuScreen.this, finderpage.class));
+            }
+        });
     }
 
 }
