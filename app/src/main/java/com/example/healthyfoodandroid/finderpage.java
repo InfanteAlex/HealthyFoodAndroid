@@ -1,15 +1,23 @@
 package com.example.healthyfoodandroid;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
@@ -31,19 +39,27 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.IOException;
+import java.util.List;
+
 
 public class finderpage extends AppCompatActivity implements OnMapReadyCallback {
     private final int fineCode = 1;
     Location currentLoc;
     FusedLocationProviderClient fusedLocationProviderClient;
     private GoogleMap map;
-    private static final int requestCode =101;
     private LocationRequest locationRequest;
-    private double lat, lng;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        fetchData fetchData = new fetchData();
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this.getApplicationContext());
+
+        //  Button healthy, keto, vegie;
+
+
         getLastLocation();
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -53,8 +69,120 @@ public class finderpage extends AppCompatActivity implements OnMapReadyCallback 
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        Button healthy = findViewById(R.id.healthy);
+        healthy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                map.clear();
+                String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" + "query=healthy+food" +
+                        "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
+                        "&radius=1000" +
+                        "&type=restaurant" +
+                        "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
 
+                fetchData.FetchData(map, url);
+                fetchData.execute();
+            }
+        });
+        Button keto = findViewById(R.id.keto);
+        keto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetchData fetchData = new fetchData();
+                map.clear();
+                String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" + "query=keto+restaurants" +
+                        "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
+                        "&radius=1000" +
+                        "&type=restaurant" +
+                        "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
+                fetchData.FetchData(map, url);
+                fetchData.execute();
+            }
+        });
+        Button vegie = findViewById(R.id.vegie);
+        vegie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                map.clear();
+                fetchData fetchData = new fetchData();
 
+                String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" + "query=vegetarian+Food" +
+                        "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
+                        "&radius=1000" +
+                        "&type=restaurant" +
+                        "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
+
+                fetchData.FetchData(map, url);
+                fetchData.execute();
+//                LatLng defaultLocation = new LatLng(currentLoc.getLatitude(), currentLoc.getLongitude());
+//                map.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 15));
+            }
+        });
+        SearchView search = findViewById(R.id.search);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String location) {
+                map.clear();
+                Toast.makeText(finderpage.this, "Search submitted: " + location, Toast.LENGTH_SHORT).show();
+
+                fetchData fetchData = new fetchData();
+
+                String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" + "query="+ location +
+                        "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
+                        "&radius=1000" +
+                        "&type=restaurant" +
+                        "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
+
+                fetchData.FetchData(map, url);
+                fetchData.execute();
+//                location = search.getQuery().toString();
+//                Geocoder geocoder = new Geocoder(finderpage.this);
+//
+//
+//                String finalLocation = location;
+//                geocoder.getFromLocationName(location, 1, new Geocoder.GeocodeListener() {
+//                    @Override
+//                    public void onGeocode(@Nullable List<Address> addresses) {
+//                        if (addresses != null && !addresses.isEmpty()) {
+//                            Address address = addresses.get(0);
+//                            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+//                            map.addMarker(new MarkerOptions().position(latLng).title(finalLocation));
+//                            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+//                        } else {
+//                            Toast.makeText(finderpage.this, "Location not found", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    public void onError(@NonNull Throwable error) {
+//                        Toast.makeText(finderpage.this, "Geocoding failed: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+
+//                if(location !=null){
+//                    Geocoder geocoder = new Geocoder(finderpage.this);
+//
+//                    try{
+//                        addressList = geocoder.getFromLocationName(currentLoc.getLatitude(),currentLoc.getLongitude(),1, new Geocoder.GeocodeListener());
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                    assert addressList != null;
+//                    Address address = addressList.get(0);
+//                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+//                    map.addMarker(new MarkerOptions().position(latLng).title(location));
+//                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+//
+//                }
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
     }
 
     private void getLastLocation(){
@@ -70,7 +198,7 @@ public class finderpage extends AppCompatActivity implements OnMapReadyCallback 
         LocationCallback locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(@NonNull LocationResult locationResult) {
-                Toast.makeText(getApplicationContext(), "location result=" + locationResult, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "location result=" + locationResult, Toast.LENGTH_LONG).show();
             }
         };
         fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback,null);
@@ -105,18 +233,18 @@ public class finderpage extends AppCompatActivity implements OnMapReadyCallback 
         // Set a default location
         LatLng defaultLocation = new LatLng(currentLoc.getLatitude(), currentLoc.getLongitude());
         map.addMarker(new MarkerOptions().position(defaultLocation).title("Orlando"));
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 10));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 12));
 
         // Check permissions before enabling location
-        fetchData fetchData = new fetchData();
+//        fetchData fetchData = new fetchData();
 
-        String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" + "query=healthy+food" +
-                "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
-                "&radius=1500" +
-                "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
-
-        fetchData.FetchData(map, url);
-        fetchData.execute();
+//        String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" + "query=healthy+food" +
+//                "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
+//                "&radius=1500" +
+//                "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
+//
+//        fetchData.FetchData(map, url);
+//        fetchData.execute();
 
     }
 

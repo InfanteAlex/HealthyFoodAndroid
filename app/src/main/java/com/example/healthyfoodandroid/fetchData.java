@@ -72,10 +72,11 @@ public class fetchData  {
                 markerOptions.title(name);
                 markerOptions.position(latLng);
                 googleMap.addMarker(markerOptions);
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
+
                 mainThreadHandler.post(() -> {
                     googleMap.addMarker(markerOptions);
-                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+//                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                     Log.d("fetchData", "Marker added for: " + name + " at location: " + latLng);
                 });
             }

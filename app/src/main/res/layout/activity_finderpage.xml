@@ -5,16 +5,75 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3FB4FD"
     tools:context=".finderpage">
 
 
     <fragment
-        xmlns:map="http://schemas.android.com/apk/res-auto"
         android:id="@+id/mapView"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="412dp"
+        android:layout_height="699dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994"
         tools:context=".MapsActivity" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="413dp"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/mapView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.833">
+
+        <Button
+            android:id="@+id/vegie"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:includeFontPadding="true"
+            android:text="@string/vegetarian" />
+
+        <Button
+            android:id="@+id/healthy"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="@string/healthy" />
+
+        <Button
+            android:id="@+id/keto"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="@string/keto" />
+    </LinearLayout>
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="405dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/search_bar_background"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

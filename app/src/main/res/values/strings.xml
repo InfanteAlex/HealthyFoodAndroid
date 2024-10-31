@@ -8,4 +8,7 @@
     <string name="create_account">Create account</string>
     <string name="sing_up_for_free">Sing up for Free</string>
     <string name="logo">Logo</string>
+    <string name="healthy">Healthy</string>
+    <string name="keto">Keto</string>
+    <string name="vegetarian">Vegetarian</string>
 </resources>
