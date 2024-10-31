@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Primary Colors -->
+    <color name="background">#E0F7FA</color> <!-- Light blue background -->
+    <color name="primaryColor">#03A9F4</color> <!-- Main blue accent -->
+    <color name="primaryDarkColor">#0288D1</color> <!-- Darker shade for accents -->
+
+    <!-- Text Colors -->
+    <color name="primaryTextColor">#212121</color> <!-- Dark gray for main text -->
+    <color name="secondaryTextColor">#757575</color> <!-- Lighter gray for secondary text -->
+
+    <!-- Accent Colors -->
+    <color name="accentColor">#FF6F00</color> <!-- Orange accent for highlights -->
+    <color name="cardBackground">#FFFFFF</color> <!-- White for card backgrounds -->
+
+    <!-- Other Common Colors -->
+    <color name="dividerColor">#BDBDBD</color> <!-- Light gray for dividers -->
+    <color name="searchBarBackground">#FFFFFF</color> <!-- White background for search bar -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#3FB5FF</color>
 </resources>
