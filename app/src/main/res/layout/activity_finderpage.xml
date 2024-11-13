@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3FB4FD"
+    android:background="#E0F7FA"
     tools:context=".finderpage">
 
 
@@ -42,16 +42,17 @@
             android:layout_marginStart="10dp"
             android:layout_weight="1"
             android:includeFontPadding="true"
+            android:backgroundTint="@color/accentColor"
             android:text="@string/vegetarian" />
 
         <Button
             android:id="@+id/healthy"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/accentColor"
             android:text="@string/healthy" />
 
         <Button
@@ -61,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/accentColor"
             android:text="@string/keto" />
     </LinearLayout>
 
