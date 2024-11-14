@@ -55,12 +55,15 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="408dp"
-        android:layout_height="73dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="587dp"
+        android:layout_marginBottom="55dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/favs"
@@ -93,8 +96,8 @@
             android:layout_weight="1"
             android:text="Recipes"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -103,8 +106,8 @@
             android:layout_weight="1"
             android:text="Restaurant Finder"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -113,8 +116,8 @@
             android:layout_weight="1"
             android:text="Food Banks"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <TextView
@@ -124,8 +127,8 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="8dp"
         android:text="Favorites"
-        android:textSize="20sp"
         android:textColor="@android:color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
@@ -137,13 +140,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
         android:text="Settings"
-        android:textSize="20sp"
         android:textColor="@android:color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.661"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
