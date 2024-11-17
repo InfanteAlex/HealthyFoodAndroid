@@ -73,7 +73,7 @@ public class bank extends AppCompatActivity implements OnMapReadyCallback {
             map.clear();
             String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" +
                     "query=food+banks&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
-                    "&radius=1000&key=YOUR_API_KEY";
+                    "&radius=1000&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
 
             fetchData fetchData = new fetchData();
             fetchData.FetchData(map, url);
@@ -89,7 +89,7 @@ public class bank extends AppCompatActivity implements OnMapReadyCallback {
 
                 String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?" +
                         "query=" + location + "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
-                        "&radius=1000&type=restaurant&key=YOUR_API_KEY";
+                        "&radius=1000&type=restaurant&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
 
                 fetchData fetchData = new fetchData();
                 fetchData.FetchData(map, url);

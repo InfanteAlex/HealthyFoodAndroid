@@ -64,7 +64,7 @@ public class finderpage extends AppCompatActivity implements OnMapReadyCallback 
                     "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
                     "&radius=1000" +
                     "&type=restaurant" +
-                    "&key=YOUR_API_KEY";
+                    "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
 
             fetchData fetchData = new fetchData();
             fetchData.FetchData(map, url);
@@ -80,7 +80,7 @@ public class finderpage extends AppCompatActivity implements OnMapReadyCallback 
                     "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
                     "&radius=1000" +
                     "&type=restaurant" +
-                    "&key=YOUR_API_KEY";
+                    "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
 
             fetchData fetchData = new fetchData();
             fetchData.FetchData(map, url);
@@ -96,7 +96,7 @@ public class finderpage extends AppCompatActivity implements OnMapReadyCallback 
                     "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
                     "&radius=1000" +
                     "&type=restaurant" +
-                    "&key=YOUR_API_KEY";
+                    "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
 
             fetchData fetchData = new fetchData();
             fetchData.FetchData(map, url);
@@ -116,7 +116,7 @@ public class finderpage extends AppCompatActivity implements OnMapReadyCallback 
                         "&location=" + currentLoc.getLatitude() + "," + currentLoc.getLongitude() +
                         "&radius=1000" +
                         "&type=restaurant" +
-                        "&key=YOUR_API_KEY";
+                        "&key=AIzaSyDnTeUoEPsCLg0aVfRZhpv7Fc4_J-Sh2-o";
 
                 fetchData fetchData = new fetchData();
                 fetchData.FetchData(map, url);
