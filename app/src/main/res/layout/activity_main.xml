@@ -23,7 +23,7 @@
 
     <!-- Username and Password Input Section -->
     <LinearLayout
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:orientation="vertical"
@@ -64,11 +64,11 @@
         <!-- Login Button -->
         <Button
             android:id="@+id/button2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/primaryColor"
-            android:contentDescription="@string/Login"
+            android:contentDescription="@string/login"
             android:padding="10dp"
             android:text="@string/login"
             android:textColor="@android:color/white" />

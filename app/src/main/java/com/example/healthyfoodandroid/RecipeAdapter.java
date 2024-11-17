@@ -11,57 +11,57 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
+public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
+
+    private List<Recipe> recipeList;
+    private OnRecipeClickListener listener;
 
     public interface OnRecipeClickListener {
         void onRecipeClick(Recipe recipe);
     }
 
-    private List<Recipe> recipes;
-    private OnRecipeClickListener listener;
-
-    public RecipeAdapter(List<Recipe> recipes, OnRecipeClickListener listener) {
-        this.recipes = recipes;
+    public RecipeAdapter(List<Recipe> recipeList, OnRecipeClickListener listener) {
+        this.recipeList = recipeList;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recipe_card, parent, false);
-        return new ViewHolder(view);
+    public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_recipe, parent, false);
+        return new RecipeViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Recipe recipe = recipes.get(position);
-        holder.recipeTitle.setText(recipe.getTitle());
-        holder.recipeDescription.setText(recipe.getDescription());
-        holder.recipeImage.setImageResource(recipe.getImageResourceId());
+    public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
+        Recipe recipe = recipeList.get(position);
+        holder.titleTextView.setText(recipe.getTitle());
+        holder.descriptionTextView.setText(recipe.getDescription());
+        holder.imageView.setImageResource(recipe.getImageResourceId());
 
         holder.itemView.setOnClickListener(v -> listener.onRecipeClick(recipe));
     }
 
     @Override
     public int getItemCount() {
-        return recipes.size();
+        return recipeList.size();
     }
 
     public void updateRecipes(List<Recipe> newRecipes) {
-        recipes = newRecipes;
+        recipeList = newRecipes;
         notifyDataSetChanged();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView recipeTitle;
-        public TextView recipeDescription;
-        public ImageView recipeImage;
+    public static class RecipeViewHolder extends RecyclerView.ViewHolder {
+        TextView titleTextView, descriptionTextView;
+        ImageView imageView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
-            recipeTitle = itemView.findViewById(R.id.recipe_title);
-            recipeDescription = itemView.findViewById(R.id.recipe_description);
-            recipeImage = itemView.findViewById(R.id.recipe_image);
+            titleTextView = itemView.findViewById(R.id.recipe_title);
+            descriptionTextView = itemView.findViewById(R.id.recipe_description);
+            imageView = itemView.findViewById(R.id.recipe_image);
         }
     }
 }

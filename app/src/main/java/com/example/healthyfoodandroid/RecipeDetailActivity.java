@@ -1,38 +1,43 @@
 package com.example.healthyfoodandroid;
 
-import static android.content.Intent.getIntent;
-
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecipeDetailActivity extends AppCompatActivity {
 
-    private TextView recipeTitle;
-    private TextView recipeDescription;
-    private ImageView recipeImage;
+    public static final String EXTRA_RECIPE_TITLE = "extra_recipe_title";
+    public static final String EXTRA_RECIPE_DESCRIPTION = "extra_recipe_description";
+    public static final String EXTRA_RECIPE_INSTRUCTIONS = "extra_recipe_instructions";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
 
-        // Initialize views
-        recipeTitle = findViewById(R.id.detail_recipe_title);
-        recipeDescription = findViewById(R.id.detail_recipe_description);
-        recipeImage = findViewById(R.id.detail_recipe_image);
+        // Get data from intent
+        String title = getIntent().getStringExtra(EXTRA_RECIPE_TITLE);
+        String description = getIntent().getStringExtra(EXTRA_RECIPE_DESCRIPTION);
+        String instructions = getIntent().getStringExtra(EXTRA_RECIPE_INSTRUCTIONS);
 
-        // Retrieve data from the intent
-        String title = getIntent().getStringExtra("recipeTitle");
-        String description = getIntent().getStringExtra("recipeDescription");
-        int imageResId = getIntent().getIntExtra("recipeImage", R.drawable.recipe_placeholder);
-        String instructions = getIntent().getStringExtra("recipeInstructions");
+        // Bind data to views
+        TextView titleTextView = findViewById(R.id.recipe_detail_title);
+        TextView descriptionTextView = findViewById(R.id.recipe_detail_description);
+        TextView instructionsTextView = findViewById(R.id.recipe_detail_instructions);
 
-        // Set the data in the views
-        recipeTitle.setText(title);
-        recipeDescription.setText(description + "\n\n" + instructions);
-        recipeImage.setImageResource(imageResId);
+        titleTextView.setText(title);
+        descriptionTextView.setText(description);
+        instructionsTextView.setText(instructions);
+    }
+
+    // Create an Intent to start this activity
+    public static Intent createIntent(Context context, Recipe recipe) {
+        Intent intent = new Intent(context, RecipeDetailActivity.class);
+        intent.putExtra(EXTRA_RECIPE_TITLE, recipe.getTitle());
+        intent.putExtra(EXTRA_RECIPE_DESCRIPTION, recipe.getDescription());
+        intent.putExtra(EXTRA_RECIPE_INSTRUCTIONS, recipe.getInstructions());
+        return intent;
     }
 }

@@ -3,10 +3,9 @@ package com.example.healthyfoodandroid;
 public class Recipe {
     private String title;
     private String description;
-    private int imageResourceId;
-    private String instructions;  // New field for instructions
+    private int imageResourceId; // Drawable resource ID
+    private String instructions;
 
-    // Updated constructor to include instructions
     public Recipe(String title, String description, int imageResourceId, String instructions) {
         this.title = title;
         this.description = description;
@@ -14,7 +13,6 @@ public class Recipe {
         this.instructions = instructions;
     }
 
-    // Getters for each field
     public String getTitle() {
         return title;
     }
