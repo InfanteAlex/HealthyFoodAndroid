@@ -1,6 +1,5 @@
 package com.example.healthyfoodandroid;
 
-package com.example.healthyfoodandroid;
 
 import org.junit.Before;
 import org.junit.Test;
