@@ -1,15 +1,48 @@
 <resources>
+    <!-- Existing Strings -->
     <string name="app_name">healthyfoodandroid</string>
     <string name="username">Username</string>
-    <string name="Login" />
-    <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="create_account">Create account</string>
-    <string name="sing_up_for_free">Sing up for Free</string>
-    <string name="logo">Logo</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_up_for_free">Sign Up for Free</string>
+    <string name="logo">App logo</string>
     <string name="healthy">Healthy</string>
     <string name="keto">Keto</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="find_food_banks">Find Food Banks</string>
+    <string name="recipe_image_desc">Image of the recipe</string>
+
+    <!-- Added Strings -->
+    <!-- Search Bar Hint -->
+    <string name="search_hint">Search recipes…</string>
+
+    <!-- Section Titles -->
+    <string name="featured_recipes">Featured Recipes</string>
+    <string name="top_favorites">Top Favorites</string>
+
+    <!-- Error Messages -->
+    <string name="error_network">Network error, please try again.</string>
+    <string name="error_no_data">No recipes available at the moment.</string>
+
+    <!-- Buttons and Labels -->
+    <string name="button_view_details">View Details</string>
+    <string name="label_ingredients">Ingredients:</string>
+    <string name="label_instructions">Instructions:</string>
+    <string name="label_servings">Servings:</string>
+
+    <!-- New strings for Recipe Detail -->
+    <string name="recipe_detail_title">Recipe Title</string>
+    <string name="recipe_detail_description">Description of the recipe goes here.</string>
+    <string name="recipe_detail_instructions">Detailed instructions for preparing the recipe.</string>
+
+    <!-- General Messages -->
+    <string name="loading">Loading…</string>
+    <string name="added_to_favorites">Added to Favorites</string>
+    <string name="removed_from_favorites">Removed from Favorites</string>
+
+    <!-- Misc -->
+    <string name="label_favorites">Favorites</string>
 </resources>
