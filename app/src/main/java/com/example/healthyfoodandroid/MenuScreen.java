@@ -61,6 +61,11 @@ public class MenuScreen extends AppCompatActivity {
         favoritesButton.setOnClickListener(view -> {
             startActivity(new Intent(MenuScreen.this, FavoritesActivity.class));
         });
+
+        ImageView settingsButton = findViewById(R.id.settings);
+        settingsButton.setOnClickListener(view -> {
+            startActivity(new Intent(MenuScreen.this, settingsActivity.class));
+        });
     }
 
     @Override

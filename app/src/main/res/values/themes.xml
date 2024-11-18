@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Healthyfoodandroid" parent="Base.Theme.Healthyfoodandroid" />
+
+    <style name="AppTheme.Light" parent="Theme.AppCompat.Light">
+        <!-- Customize light theme attributes here -->
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <!-- Customize dark theme attributes here -->
+    </style>
 </resources>

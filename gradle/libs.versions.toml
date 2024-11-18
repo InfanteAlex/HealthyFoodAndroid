@@ -12,6 +12,9 @@ playServicesLocation = "21.3.0"
 places = "4.0.0"
 recyclerview = "1.3.1"
 carUiLib = "2.6.0"
+kotlin = "1.8.10"
+preference = "1.2.0"
+preferenceKtx = "1.2.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -26,7 +29,10 @@ play-services-location = { group = "com.google.android.gms", name = "play-servic
 places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 car-ui-lib = { group = "com.android.car.ui", name = "car-ui-lib", version.ref = "carUiLib" }
+preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
+preference-ktx = { group = "androidx.preference", name = "preference-ktx", version.ref = "preferenceKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
