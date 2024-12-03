@@ -1,6 +1,9 @@
 package com.example.healthyfoodandroid;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,7 +17,8 @@ public class FavoritesActivity extends AppCompatActivity {
 
     private RecyclerView favoritesRecyclerView;
     private RecipeAdapter favoritesAdapter;
-    private List<Recipe> favoriteRecipes;
+    private List<Recipe> favoriteRecipes, filteredRecipes;
+    private EditText searchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +33,52 @@ public class FavoritesActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Favorites");
         }
 
+        // Initialize Search Bar
+        searchBar = findViewById(R.id.search_bar);
+
         // Initialize RecyclerView
         favoritesRecyclerView = findViewById(R.id.favorites_recycler_view);
         favoritesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Dummy favorite recipes (Replace with actual data if necessary)
         favoriteRecipes = getFavoriteRecipes();
+        filteredRecipes = new ArrayList<>(favoriteRecipes);
 
         // Initialize Adapter
-        favoritesAdapter = new RecipeAdapter(favoriteRecipes, recipe -> {
+        favoritesAdapter = new RecipeAdapter(filteredRecipes, recipe -> {
             // Handle recipe click to navigate to RecipeDetailActivity
             startActivity(RecipeDetailActivity.createIntent(this, recipe));
         });
 
         favoritesRecyclerView.setAdapter(favoritesAdapter);
+
+        // Add TextWatcher to filter results as the user types
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterFavorites(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
+    }
+
+    private void filterFavorites(String query) {
+        filteredRecipes.clear();
+        if (query.isEmpty()) {
+            filteredRecipes.addAll(favoriteRecipes);
+        } else {
+            for (Recipe recipe : favoriteRecipes) {
+                if (recipe.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                    filteredRecipes.add(recipe);
+                }
+            }
+        }
+        favoritesAdapter.notifyDataSetChanged();
     }
 
     // Dummy favorite recipes
