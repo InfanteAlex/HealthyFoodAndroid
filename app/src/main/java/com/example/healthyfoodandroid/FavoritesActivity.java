@@ -3,6 +3,7 @@ package com.example.healthyfoodandroid;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,14 @@ public class FavoritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
+
+        // Initialize Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Favorites");
+        }
 
         // Initialize RecyclerView
         favoritesRecyclerView = findViewById(R.id.favorites_recycler_view);
@@ -42,5 +51,12 @@ public class FavoritesActivity extends AppCompatActivity {
         recipes.add(new Recipe("Garlic Butter Salmon", "Quick and delicious salmon recipe", R.drawable.garlic_butter_salmon, "Instructions here..."));
         recipes.add(new Recipe("Veggie Stir Fry", "Healthy stir fry with fresh veggies", R.drawable.veggie_stir_fry, "Instructions here..."));
         return recipes;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        // Handle the back button action
+        onBackPressed();
+        return true;
     }
 }
